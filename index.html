@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Coin Flip</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -34,6 +35,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      margin: 5px;
       background-color: #0b5394;
       color: #fff;
       transition: background-color 0.3s ease;
@@ -47,6 +49,12 @@
     .resultText {
       font-size: 1.2em;
       margin-top: 20px;
+    }
+
+    .infoText {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #aaa;
     }
 
     @media (prefers-color-scheme: light) {
@@ -72,6 +80,10 @@
         background-color: #3d85c6;
         color: #1e1e1e;
       }
+
+      .infoText {
+        color: #555;
+      }
     }
   </style>
 </head>
@@ -80,7 +92,11 @@
   <div class="widget">
     <h3>Coin Flip</h3>
     <button onclick="flipCoin()">Flip Coin</button>
+    <button onclick="clearResult()">Clear</button>
     <div id="coinflipResult" class="resultText"></div>
+    <div id="infoText" class="infoText" style="display: none;">
+      Click "Flip Coin" again to flip the coin another time.
+    </div>
   </div>
 
   <script>
@@ -88,6 +104,12 @@
       const results = ["Heads", "Tails"];
       const result = results[Math.floor(Math.random() * results.length)];
       document.getElementById('coinflipResult').innerHTML = `<strong>Result:</strong> ${result}`;
+      document.getElementById('infoText').style.display = 'block';
+    }
+
+    function clearResult() {
+      document.getElementById('coinflipResult').innerHTML = '';
+      document.getElementById('infoText').style.display = 'none';
     }
   </script>
 
